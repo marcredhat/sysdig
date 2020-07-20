@@ -77,6 +77,13 @@ sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1
 oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bitnami
 ----
 
+----
+Result:
+admissionevaluatorimpl.go:68 Scan check for admission review 5be04fdb-f8e7-4bf3-8e18-d3c0e77b2c20 
+ALLOWED container 'wordpress' image 'docker.io/bitnami/wordpress'
+mutationhook.go:71] [mutation-server] Patching container image: docker.io/bitnami/wordpress -> docker.io/bitnami/wordpress@sha256:d4108c732e7656b226a98bf7f4cb7f84f74b4930f0e6c1317a47a71ed7b76713
+----
+
 image:images/goodimage.png[title="Scan result - good image"]
 
 == Deploy a bad image and check the Sysdig Admission Controller's activity
