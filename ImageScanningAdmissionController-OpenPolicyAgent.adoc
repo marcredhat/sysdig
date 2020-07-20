@@ -89,4 +89,11 @@ sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1
 oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bad
 ----
 
+----
+Result:
+Admission review 9833f912-5875-4cfb-8459-aa91677ad88f - pod 'badimage-b744db485-*' REJECTED. Reasons:
+Image 'docker.io/airadier/test:bad' for container 'test' failed scan policy check: REJECTED. Global default policy - scan result is 'reject'
+I0720 03:03:59.601996       1 mutationhook.go:71] [mutation-server] Patching container image: docker.io/airadier/test:bad -> docker.io/airadier/test@sha256:b3787bd182d60ee3bd8d0bb53064e7eaa1073b817c31769dba3822895f9254d6 "value": "bad"
+----
+
 image:images/badimage.png[title="Scan result - bad image"]
