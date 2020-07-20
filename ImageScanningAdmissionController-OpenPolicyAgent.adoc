@@ -37,10 +37,6 @@ Kubernetes Version: v1.18.3+b74c5ed
 Helm version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
 ----
 
-https://sysdig.com/blog/kubernetes-admission-controllers/
-https://sysdiglabs.github.io/sysdig-admission-controller/
-https://sysdig.com/blog/image-scanning-admission-controller/
-----
 
 ----
 To install helm on RHEL 8, see https://github.com/marcredhat/workshop/tree/master/helm
