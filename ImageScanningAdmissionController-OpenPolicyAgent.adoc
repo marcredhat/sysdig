@@ -57,5 +57,23 @@ vim ./scripts/clean.sh; replace kubectl with oc
 make deploy
 ----
 
+== Deploy a good image and check the Sysdig Admission Controller's activity
 
+----
+#!/usr/bin/env bash
+oc project goodimages
+oc delete deploy --all
+oc create deployment test-dep4 --image=docker.io/bitnami/wordpress
+sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1 | awk '{print $1}'`
+oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bitnami
+----
 
+== Deploy a bad image and check the Sysdig Admission Controller's activity
+
+----
+oc project badimages
+oc delete deploy --all
+oc create deployment badimage --image=docker.io/airadier/test:bad
+sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1 | awk '{print $1}'`
+oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bad
+----
