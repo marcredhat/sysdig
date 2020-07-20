@@ -1,0 +1,34 @@
+
+----
+oc version && helm version
+https://sysdig.com/blog/kubernetes-admission-controllers/
+https://sysdiglabs.github.io/sysdig-admission-controller/
+https://sysdig.com/blog/image-scanning-admission-controller/
+----
+
+----
+To install helm on RHEL 8, see https://github.com/marcredhat/workshop/tree/master/helm
+
+wget https://raw.githubusercontent.com/sysdiglabs/charts/master/charts/sysdig-admission-controller/values.yaml
+
+
+oc new-project  sysdig-admission-controller
+helm repo add sysdiglabs https://sysdiglabs.github.io/charts/
+
+#Check "Chart Versions" at https://hub.helm.sh/charts/sysdiglabs/sysdig-admission-controller
+helm install -n sysdig-admission-controller sysdig-admission-controller -f values.yaml sysdiglabs/sysdig-admission-controller --version 1.1.5
+----
+
+----
+
+git clone https://github.com/sysdiglabs/image-scanning-admission-controller.git
+cd image-scanning-admission-controller
+export ANCHORE_CLI_URL="https://api.sysdigcloud.com/api/scanning/v1/anchore"
+export ANCHORE_CLI_USER="<Sysdig Secure API Token>"
+vim ./scripts/deploy.sh; replace kubectl with oc
+vim ./scripts/clean.sh; replace kubectl with oc
+make deploy
+----
+
+
+
