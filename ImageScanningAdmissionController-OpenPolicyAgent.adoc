@@ -17,6 +17,9 @@ It retrieves the scan report of the image.
 It evaluates the scan report and the admission review context using a set of OPA rules that can be modified and extended if required.
 
 Source: https://sysdig.com/blog/image-scanning-admission-controller/
+See also:
+https://sysdig.com/blog/kubernetes-admission-controllers/
+https://sysdiglabs.github.io/sysdig-admission-controller/
 ----
 
 ----
@@ -27,7 +30,13 @@ please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the
 ----
 
 ----
-oc version && helm version
+oc version && printf "Helm " && helm version
+Client Version: 4.5.2
+Server Version: 4.5.2
+Kubernetes Version: v1.18.3+b74c5ed
+Helm version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb4fe05d143688", GitTreeState:"clean", GoVersion:"go1.13.12"}
+----
+
 https://sysdig.com/blog/kubernetes-admission-controllers/
 https://sysdiglabs.github.io/sysdig-admission-controller/
 https://sysdig.com/blog/image-scanning-admission-controller/
