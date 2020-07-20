@@ -1,4 +1,31 @@
 
+== Sysdig OPA Image Scanner on OpenShift 4.5.2+
+
+----
+The Sysdig OPA Image Scanner registers as a dynamic admission controller plugin and intercepts 
+the creation, or update of Pods, in the cluster. 
+
+When a Pod resource is intercepted, the controller performs several steps for every container inside the pod:
+
+It triggers a scan of the image used for that container.
+
+It modifies (mutates) the pod definition by changing the tag of the image and replacing it with the @sha256:digest, 
+so the image is selected by digest and not by tag.
+
+It retrieves the scan report of the image.
+
+It evaluates the scan report and the admission review context using a set of OPA rules that can be modified and extended if required.
+
+Source: https://sysdig.com/blog/image-scanning-admission-controller/
+----
+
+----
+For details on how to fully automate the installation of OpenShift 4.5 (for lab/test purposes)
+on a baremetal server with KVM/libvirt,
+please see https://github.com/marcredhat/z/blob/master/zdt.adoc, starting at the
+"Install OpenShift 4" paragraph
+----
+
 ----
 oc version && helm version
 https://sysdig.com/blog/kubernetes-admission-controllers/
