@@ -1,6 +1,9 @@
 
 == Sysdig OPA Image Scanner on OpenShift 4.5.2+
 
+
+Video at https://bit.ly/marcredhatopa
+
 ----
 The Sysdig OPA Image Scanner registers as a dynamic admission controller plugin and intercepts 
 the creation, or update of Pods, in the cluster. 
@@ -40,10 +43,20 @@ Helm version.BuildInfo{Version:"v3.2.4", GitCommit:"0ad800ef43d3b826f31a5ad8dfbb
 
 ----
 To install helm on RHEL 8, see https://github.com/marcredhat/workshop/tree/master/helm
+----
 
+----
 wget https://raw.githubusercontent.com/sysdiglabs/charts/master/charts/sysdig-admission-controller/values.yaml
+----
+
+----
+I'm using https://github.com/marcredhat/sysdig/blob/master/values.yaml
+----
+
+NOTE: I set verboseLog: true and reportPending: accept
 
 
+----
 oc new-project  sysdig-admission-controller
 helm repo add sysdiglabs https://sysdiglabs.github.io/charts/
 
