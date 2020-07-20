@@ -57,6 +57,10 @@ vim ./scripts/clean.sh; replace kubectl with oc
 make deploy
 ----
 
+== Define Sysdig Scanning Policies
+
+image:images/sysdigpolicies.png[title="Sysdig Scanning Policies"]
+
 == Deploy a good image and check the Sysdig Admission Controller's activity
 
 ----
@@ -68,6 +72,8 @@ sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1
 oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bitnami
 ----
 
+image:images/goodimage.png[title="Scan result - good image"]
+
 == Deploy a bad image and check the Sysdig Admission Controller's activity
 
 ----
@@ -77,3 +83,5 @@ oc create deployment badimage --image=docker.io/airadier/test:bad
 sysdigadmissioncontroller=`oc get pods -n  sysdig-admission-controller | tail -1 | awk '{print $1}'`
 oc logs $sysdigadmissioncontroller -n sysdig-admission-controller --follow | grep bad
 ----
+
+image:images/badimage.png[title="Scan result - bad image"]
