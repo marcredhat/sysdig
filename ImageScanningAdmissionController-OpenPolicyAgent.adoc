@@ -49,9 +49,8 @@ To install helm on RHEL 8, see https://github.com/marcredhat/workshop/tree/maste
 wget https://raw.githubusercontent.com/sysdiglabs/charts/master/charts/sysdig-admission-controller/values.yaml
 ----
 
-----
+
 I'm using https://github.com/marcredhat/sysdig/blob/master/values.yaml
-----
 
 NOTE: I set verboseLog: true and reportPending: accept
 
